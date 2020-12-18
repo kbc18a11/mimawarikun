@@ -20,7 +20,16 @@ class Model {
         return this.tableName;
     }
 
+    all() {
+        this.db.find({});
+    }
+
     create() {
 
     }
+
+    find() {
+
+    }
+
 }
