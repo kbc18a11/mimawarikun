@@ -1,4 +1,4 @@
-const Nedb = require('nedb-promise');
+const Nedb = require('nedb-promises');
 
 class Model {
     /**
@@ -20,12 +20,31 @@ class Model {
         return this.tableName;
     }
 
-    all() {
-        this.db.find({});
+    /**
+     * テーブルの情報すべて取得
+     * @returns {object}
+     */
+    async all() {
+        return await this.db.find({});
     }
 
-    create() {
+    /**
+     * データの挿入
+     * @param {object} createData 
+     */
+    async create(createData) {
+        await this.db.insert(createData);
+    }
 
+    delete() {
+
+    }
+
+    /**
+     * テーブルの中身すべて削除
+     */
+    async deleteAll() {
+        await this.db.remove({}, { multi: true });
     }
 
     find() {
@@ -33,3 +52,5 @@ class Model {
     }
 
 }
+
+module.exports = Model;
