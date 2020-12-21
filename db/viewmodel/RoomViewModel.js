@@ -1,5 +1,5 @@
 const Room = require('../model/Room');
-const RoomValidator = require('../validation/RoomValidator');
+const RoomValidator = require('../validation/RoomValidation');
 
 class RoomViewModel {
     /**
@@ -24,6 +24,12 @@ class RoomViewModel {
         const room = new Room();
         //ページネーション用のデータを返す
         return await room.getPaginateData(offset, limit);
+    }
+
+    static async create(name, className) {
+        const roomValidator = new RoomValidator();
+        //バリデーションを実行
+        roomValidator.create(name, className);
     }
 }
 
