@@ -1,11 +1,13 @@
-const Room = require('../model/Room');
+const Room = require('../db/model/Room');
 
 /**
  * create()のサンプル
  */
 const createSample = async () => {
+    console.log('create()のサンプル');
+
     //挿入するサンプルのデータ
-    const createData = { name: '101', class: 'ITE1' };
+    const createData = { name: '103', class: 'WB2' };
 
     const room = new Room();
 
@@ -21,6 +23,8 @@ const createSample = async () => {
  * find()のサンプル
  */
 const findSample = async () => {
+    console.log('find()のサンプル');
+
     //挿入するサンプルのデータ
     const createData = { name: '101', class: 'ITE1' };
 
@@ -41,6 +45,8 @@ const findSample = async () => {
  * delete()のサンプル
  */
 const deleteSample = async () => {
+    console.log('delete()のサンプル');
+
     //挿入するサンプルのデータ
     const createData = { name: '101', class: 'ITE1' };
 
@@ -61,6 +67,8 @@ const deleteSample = async () => {
  * deleteAll()のサンプル
  */
 const deleteAllSample = async () => {
+    console.log('deleteAll()のサンプル');
+
     const room = new Room();
 
     console.log(await room.all());
@@ -69,4 +77,20 @@ const deleteAllSample = async () => {
 
     console.log(await room.all());
 };
-deleteAllSample();
+//deleteAllSample();
+
+/**
+ * getPaginateDataのサンプル
+ */
+const getPaginateDataSample = async () => {
+    console.log('getPaginateData()のサンプル');
+
+    const room = new Room();
+
+    //レコードの開始位置
+    const offset = 0;
+    //レコードの取得数
+    const limit = 5;
+    console.log(await room.getPaginateData(offset, limit));
+};
+getPaginateDataSample();
