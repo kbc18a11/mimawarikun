@@ -1,4 +1,4 @@
-const Room = require('../db/model/Room');
+const Room = require('../../db/model/Room');
 
 /**
  * create()のサンプル
