@@ -21,8 +21,8 @@ class Model {
     }
 
     /**
-     * テーブルの情報すべて取得
-     * @returns {object}
+     * テーブルのレコードをすべて取得
+     * @returns {Array[object]} レコード
      */
     async all() {
         return await this.db.find({});
@@ -31,23 +31,24 @@ class Model {
     /**
      * レコードの挿入
      * @param {object} createData 
-     * @returns {object} 挿入したレコード
+     * @returns {Array[object]} 挿入したレコード
      */
     async create(createData) {
         return await this.db.insert(createData);
     }
 
     /**
-     * レコードの削除
-     * @param {*} _id 
+     * _idからレコードを検索し、削除
+     * @param {string} _id 検索したいレコードの_id
+     * @returns {Array[object]} 削除したレコード
      */
     async delete(_id) {
         return await this.db.remove({ _id: _id });
     }
 
     /**
-     * テーブルの中身すべて削除
-     * @returns {object}
+     * テーブルのレコードすべて削除
+     * @returns {Array[object]} 削除したレコード
      */
     async deleteAll() {
         return await this.db.remove({}, { multi: true });
@@ -56,7 +57,7 @@ class Model {
     /**
      * _idからレコードを検索
      * @param {string} _id 検索したいレコードの_id
-     * @returns {object} 検索結果
+     * @returns {Array[object]} 検索結果
      */
     async find(_id) {
         return await this.db.find({ _id: _id });
