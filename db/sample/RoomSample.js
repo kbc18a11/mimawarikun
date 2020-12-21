@@ -13,7 +13,6 @@ const createSample = async () => {
 
     console.log(await room.all());
 
-    room.deleteAll();
 };
 
 //createSample();
@@ -56,4 +55,18 @@ const deleteSample = async () => {
 
     console.log(await room.all());
 };
-deleteSample();
+//deleteSample();
+
+/**
+ * deleteAll()のサンプル
+ */
+const deleteAllSample = async () => {
+    const room = new Room();
+
+    console.log(await room.all());
+    //レコードを全て削除
+    room.deleteAll();
+
+    console.log(await room.all());
+};
+deleteAllSample();
