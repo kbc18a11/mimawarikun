@@ -59,7 +59,7 @@ class Model {
      * @param {string} _id 検索したいレコードの_id
      * @returns {Array[object]} 検索結果
      */
-    async find(_id) {
+    async findById(_id) {
         return await this.db.find({ _id: _id });
     }
 
