@@ -1,6 +1,8 @@
 const Room = require('../model/Room');
 
-//create()のサンプル
+/**
+ * create()のサンプル
+ */
 const createSample = async () => {
     //挿入するサンプルのデータ
     const createData = { name: '101', class: 'ITE1' };
@@ -14,4 +16,22 @@ const createSample = async () => {
     room.deleteAll();
 };
 
-createSample();
+//createSample();
+
+/**
+ * find()のサンプル
+ */
+const findSample = async () => {
+    //挿入するサンプルのデータ
+    const createData = { name: '101', class: 'ITE1' };
+
+    const room = new Room();
+    //挿入して、挿入したデータを取得
+    const roomdata = await room.create(createData);
+
+    console.log(roomdata);
+
+    //_idからレコードを検索
+    console.log(await room.find(roomdata._id));
+};
+findSample();

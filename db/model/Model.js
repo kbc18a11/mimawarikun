@@ -29,26 +29,37 @@ class Model {
     }
 
     /**
-     * データの挿入
+     * レコードの挿入
      * @param {object} createData 
+     * @returns {object} 挿入したレコード
      */
     async create(createData) {
-        await this.db.insert(createData);
+        return await this.db.insert(createData);
     }
 
-    delete() {
-
+    /**
+     * レコードの削除
+     * @param {*} _id 
+     */
+    async delete(_id) {
+        return await this.db.remove({ _id: _id });
     }
 
     /**
      * テーブルの中身すべて削除
+     * @returns {object}
      */
     async deleteAll() {
-        await this.db.remove({}, { multi: true });
+        return await this.db.remove({}, { multi: true });
     }
 
-    find() {
-
+    /**
+     * _idからレコードを検索
+     * @param {string} _id 検索したいレコードの_id
+     * @returns {object} 検索結果
+     */
+    async find(_id) {
+        return await this.db.find({ _id: _id });
     }
 
 }
