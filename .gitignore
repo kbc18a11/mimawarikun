@@ -1,4 +1,5 @@
 node_modules
 dist
 packages
-db/dbfile
+db/dbfile/*
+usesample/dbfile/*

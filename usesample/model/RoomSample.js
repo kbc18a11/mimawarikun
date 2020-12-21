@@ -1,4 +1,5 @@
 const Room = require('../../db/model/Room');
+const init = require('../sampleInit');
 
 /**
  * create()のサンプル
