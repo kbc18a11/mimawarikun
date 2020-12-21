@@ -12,22 +12,6 @@ class Validation {
         this.fails = false;
     }
 
-    /**
-     * エラーメッセージの取得
-     * @returns {string} エラーメッセージ
-     */
-    get getErrorMessages() {
-        return this.errorMessages;
-    }
-
-    /**
-     * バリデーションの結果(true:失敗,false:成功)
-     * @returns {boolean}
-     */
-    get getFails() {
-        return this.fails;
-    }
-
     newValidator(data, rules) {
         const validator = new Validator(data, rules, this.rulesErrorMesages);
 

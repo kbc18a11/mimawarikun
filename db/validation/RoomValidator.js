@@ -16,10 +16,11 @@ class RoomValidation extends Validation {
     getPagenateData(offset, limit) {
         //バリデーションのルール
         const rules = {
-            offset: 'required|number',
-            limit: 'required|number'
+            offset: 'required|integer',
+            limit: 'required|integer'
         };
 
+        //バリデーションの実行
         super.newValidator({ offset, limit }, rules);
     }
 }
