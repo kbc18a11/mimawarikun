@@ -29,7 +29,7 @@ class Validation {
     }
 
     newValidator(data, rules) {
-        const validator = Validator(data, rules, this.rulesErrorMesages);
+        const validator = new Validator(data, rules, this.rulesErrorMesages);
 
         //バリデーションの結果を
         this.fails = validator.fails();
@@ -41,3 +41,4 @@ class Validation {
         }
     }
 }
+module.exports = Validation;

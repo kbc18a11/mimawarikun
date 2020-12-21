@@ -23,3 +23,4 @@ class RoomValidation extends Validation {
         super.newValidator({ offset, limit }, rules);
     }
 }
+module.exports = RoomValidation;
