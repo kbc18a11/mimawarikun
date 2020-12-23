@@ -16,7 +16,7 @@ class Migration {
      * テーブル作成
      */
     createTable() {
-        const filePath = '../dbfile/';
+        const filePath = __dirname + '/../dbfile/';
 
         this.db = new NeDB({
             filename: filePath + this.dbFileName

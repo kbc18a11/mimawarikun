@@ -9,7 +9,7 @@ class Model {
         this.tableName = tableName;
 
         //テーブル読み込み
-        this.db = new Nedb({ filename: `../dbfile/${tableName}.db`, autoload: true });
+        this.db = new Nedb({ filename: __dirname + `/../dbfile/${tableName}.db`, autoload: true });
     }
 
     /**

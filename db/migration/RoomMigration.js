@@ -1,4 +1,4 @@
-const Migration = require('./Migration');
+const Migration = require(__dirname + '/./Migration');
 
 class RoomMigration extends Migration {
     constructor(dbFileName, sampleDatas) {

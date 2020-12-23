@@ -18,6 +18,26 @@ class Room extends Model {
     async getPaginateData(offset, limit) {
         return await this.db.find().skip(offset).limit(limit).sort({ name: 1 });
     }
+
+    /**
+     * nameからレコードを検索
+     * @param {string} name 
+     * 
+     * @returns {Array[object]} 検索結果
+     */
+    async findByName(name) {
+        return await this.db.find({ name: name });
+    }
+
+    /**
+     * classからレコードを検索
+     * @param {string} className 
+     * 
+     * @returns {Array[object]} 検索結果
+     */
+    async findByClassName(className) {
+        return await this.db.find({ class: className });
+    }
 }
 
 module.exports = Room;
