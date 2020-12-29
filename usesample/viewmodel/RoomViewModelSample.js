@@ -1,6 +1,17 @@
-const RoomViewModel = require('../../db/viewmodel/RoomViewModel');
+const RoomViewModel = require(__dirname + '/../../db/viewmodel/RoomViewModel');
+const Room = require(__dirname + '/../../db/model/Room');
+
+
 const getPagenateData = async () => {
+    console.log('getPagenateData()');
     const data = await RoomViewModel.getPagenateData(0, 5);
     console.log(data);
 }
-getPagenateData();
+//getPagenateData();
+
+const create = async () => {
+    console.log('create()');
+    const data = await RoomViewModel.create('1087');
+    console.log(data);
+}
+create();

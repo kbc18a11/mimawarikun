@@ -1,5 +1,5 @@
-const Validation = require('./Validation');
-const Room = require('../model/Room');
+const Validation = require(__dirname + '/./Validation');
+const Room = require(__dirname + '/../model/Room');
 
 //ルール事のエラーメッセージ
 const rulesErrorMesages = {
@@ -10,10 +10,16 @@ const rulesErrorMesages = {
 
 //独自バリデーションルール
 const customRules = {
-    findByName: async () => {
-        const room = new Room();
-        return !await room.findByName(name);
-    },
+    name: {
+        callback: async (name) => {
+            const room = new Room();
+            const roomData = await room.findByName(name);
+
+            return roomData;
+            return roomData.length;
+        },
+        errorMesage: '既に存在する部屋です。'
+    }
 };
 
 class RoomValidation extends Validation {
@@ -36,6 +42,11 @@ class RoomValidation extends Validation {
         super.newValidator({ offset: offset, limit: limit }, rules);
     }
 
+    /**
+     * RoomViewModel.create()のバリデーション
+     * @param {*} name 追加しようとする部屋名
+     * @param {*} className 追加しようとするクラス名
+     */
     async create(name, className) {
         //バリデーションのルール
         const rules = {
@@ -46,9 +57,11 @@ class RoomValidation extends Validation {
         //バリデーションの実行
         super.newValidator({ name: name, class: className }, rules);
 
-        //ライブラリのバリデーションは、成功したか？
-        if (!this.fails) {
-
+        const roomData = await customRules.name.callback(name);
+        //同じ名前の部屋名は存在するか？
+        if (roomData) {
+            //nameにエラーメッセージを追加
+            this.errorMessages.errors.name = [customRules.name.errorMesage];
         }
     }
 }

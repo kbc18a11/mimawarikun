@@ -1,15 +1,25 @@
 const Validator = require('validatorjs');
 
 class Validation {
+    /**
+     * @param {object} rulesErrorMesages ルール事のエラーメッセージ
+     * @param {Array[object]} customRules 独自バリデーションルールの配列
+     */
     constructor(rulesErrorMesages) {
         //バリデーションエラーのメッセージ
-        this.errorMessages = [];
+        this.errorMessages = {
+            errors: {}
+        };
 
         //バリデーションルールごとのエラーメッセージ
         this.rulesErrorMesages = rulesErrorMesages;
 
         //バリデーションが失敗したかどうか？
         this.fails = false;
+    }
+
+
+    setCustomRulesErrorMessagesTmplate() {
     }
 
     newValidator(data, rules) {

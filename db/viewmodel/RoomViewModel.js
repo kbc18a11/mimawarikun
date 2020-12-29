@@ -1,5 +1,5 @@
-const Room = require('../model/Room');
-const RoomValidator = require('../validation/RoomValidation');
+const Room = require(__dirname + '/../model/Room');
+const RoomValidator = require(__dirname + '/../validation/RoomValidation');
 
 class RoomViewModel {
     /**
@@ -29,7 +29,15 @@ class RoomViewModel {
     static async create(name, className) {
         const roomValidator = new RoomValidator();
         //バリデーションを実行
-        roomValidator.create(name, className);
+        await roomValidator.create(name, className);
+
+        //バリデーションは失敗したか？
+        if (roomValidator.fails) {
+            //エラーメッセージを返す
+            return roomValidator.errorMessages;
+        }
+
+        return true;
     }
 }
 
