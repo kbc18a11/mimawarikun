@@ -90,10 +90,9 @@ class RoomValidation extends Validation {
 
         //idの存在を確認
         const roomData = await customRules.id.callback(id);
-        console.log(roomData);
 
         //存在しないidか？
-        if (roomData) {
+        if (!roomData.length) {
             //エラーメッセージの存在を定義
             this.fails = true;
 

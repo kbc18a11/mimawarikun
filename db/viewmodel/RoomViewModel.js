@@ -59,7 +59,7 @@ class RoomViewModel {
             return roomValidator.errorMessages;
         }
 
-        return true;
+        return new Room().delete(id);
     }
 }
 

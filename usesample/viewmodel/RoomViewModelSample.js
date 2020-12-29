@@ -18,7 +18,7 @@ const create = async () => {
 
 const de = async () => {
     console.log('delete()');
-    const data = await RoomViewModel.delete('a');
+    const data = await RoomViewModel.delete('QRkUTt65m5l0OQnm');
     console.log(data);
 }
 de();
