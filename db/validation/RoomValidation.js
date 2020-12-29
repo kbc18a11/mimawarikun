@@ -58,9 +58,14 @@ class RoomValidation extends Validation {
         //バリデーションの実行
         super.newValidator({ name: name, class: className }, rules);
 
+        //nameがすでに存在する部屋なのかを取得
         const roomData = await customRules.name.callback(name);
+
         //同じ名前の部屋名は存在するか？
         if (roomData) {
+            //エラーメッセージの存在を定義
+            this.fails = true;
+
             //nameにエラーメッセージを追加
             this.errorMessages.errors.name = [customRules.name.errorMesage];
         }
