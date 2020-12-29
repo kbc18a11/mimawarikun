@@ -4,10 +4,10 @@ const RoomValidator = require(__dirname + '/../validation/RoomValidation');
 class RoomViewModel {
     /**
      * roomのページネーション用のデータ
-     * 
+     *
      * @param {number} offset 開始位置
      * @param {number} limit 取得数
-     * 
+     *
      * @returns {object} バリデーションエラーメッセージ or ページネーション用のデータ
      */
     static async getPagenateData(offset, limit) {
@@ -28,10 +28,10 @@ class RoomViewModel {
 
     /**
      * 部屋を追加する
-     * 
+     *
      * @param {*} name 追加しようとする部屋名
      * @param {*} className 追加しようとするクラス名
-     * 
+     *
      * @returns {object} バリデーションエラーメッセージ or 作成した部屋データ
      */
     static async create(name, className) {
@@ -46,6 +46,20 @@ class RoomViewModel {
         }
 
         return new Room().create({ name: name, class: className });
+    }
+
+    static async delete(id) {
+        const roomValidator = new RoomValidator();
+        //バリデーションを実行
+        await roomValidator.delete(id);
+
+        //バリデーションは失敗したか？
+        if (roomValidator.fails) {
+            //エラーメッセージを返す
+            return roomValidator.errorMessages;
+        }
+
+        return true;
     }
 }
 

@@ -16,9 +16,17 @@ const customRules = {
             const roomData = await room.findByName(name);
 
             return roomData;
-            return roomData.length;
         },
         errorMesage: '既に存在する部屋です。'
+    },
+    id: {
+        callback: async (id) => {
+            const room = new Room();
+            const roomData = await room.findById(id);
+
+            return roomData;
+        },
+        errorMesage: '存在しないidです。'
     }
 };
 
@@ -68,6 +76,29 @@ class RoomValidation extends Validation {
 
             //nameにエラーメッセージを追加
             this.errorMessages.errors.name = [customRules.name.errorMesage];
+        }
+    }
+
+    async delete(id) {
+        //バリデーションのルール
+        const rules = {
+            id: 'required'
+        };
+
+        //バリデーションの実行
+        super.newValidator({ id: id }, rules);
+
+        //idの存在を確認
+        const roomData = await customRules.id.callback(id);
+        console.log(roomData);
+
+        //存在しないidか？
+        if (roomData) {
+            //エラーメッセージの存在を定義
+            this.fails = true;
+
+            //idにエラーメッセージを追加
+            this.errorMessages.errors.id = [customRules.id.errorMesage];
         }
     }
 }

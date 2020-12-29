@@ -14,4 +14,11 @@ const create = async () => {
     const data = await RoomViewModel.create('222', 'ITE7');
     console.log(data);
 }
-create();
+//create();
+
+const de = async () => {
+    console.log('delete()');
+    const data = await RoomViewModel.delete('a');
+    console.log(data);
+}
+de();
