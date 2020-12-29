@@ -11,7 +11,7 @@ const getPagenateData = async () => {
 
 const create = async () => {
     console.log('create()');
-    const data = await RoomViewModel.create('1087');
+    const data = await RoomViewModel.create('222', 'ITE7');
     console.log(data);
 }
 create();

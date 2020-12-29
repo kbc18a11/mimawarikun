@@ -26,6 +26,12 @@ class RoomViewModel {
         return await room.getPaginateData(offset, limit);
     }
 
+    /**
+     * 部屋を追加する
+     * 
+     * @param {*} name 追加しようとする部屋名
+     * @param {*} className 追加しようとするクラス名
+     */
     static async create(name, className) {
         const roomValidator = new RoomValidator();
         //バリデーションを実行
@@ -37,7 +43,7 @@ class RoomViewModel {
             return roomValidator.errorMessages;
         }
 
-        return true;
+        return new Room().create({ name: name, class: className });
     }
 }
 
