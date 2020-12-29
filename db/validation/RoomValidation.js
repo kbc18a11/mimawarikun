@@ -44,6 +44,7 @@ class RoomValidation extends Validation {
 
     /**
      * RoomViewModel.create()のバリデーション
+     * 
      * @param {*} name 追加しようとする部屋名
      * @param {*} className 追加しようとするクラス名
      */

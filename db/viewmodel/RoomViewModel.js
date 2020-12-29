@@ -8,7 +8,7 @@ class RoomViewModel {
      * @param {number} offset 開始位置
      * @param {number} limit 取得数
      * 
-     * @returns {Array[object]} バリデーションエラーメッセージ or ページネーション用のデータ
+     * @returns {object} バリデーションエラーメッセージ or ページネーション用のデータ
      */
     static async getPagenateData(offset, limit) {
         const roomValidator = new RoomValidator();
@@ -31,6 +31,8 @@ class RoomViewModel {
      * 
      * @param {*} name 追加しようとする部屋名
      * @param {*} className 追加しようとするクラス名
+     * 
+     * @returns {object} バリデーションエラーメッセージ or 作成した部屋データ
      */
     static async create(name, className) {
         const roomValidator = new RoomValidator();
