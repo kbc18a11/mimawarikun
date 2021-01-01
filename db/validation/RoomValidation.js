@@ -133,5 +133,34 @@ class RoomValidation extends Validation {
             this.errorMessages.errors.id = [customRules.id.errorMesage];
         }
     }
+
+    /**
+     * RoomViewModel.update()のバリデーション
+     * @param {*} id 対象の部屋のid
+     * @param {*} name 対象の部屋の部屋名
+     * @param {*} className 対象の部屋のクラス名
+     */
+    async update(id, name, className) {
+        //バリデーションのルール
+        const rules = {
+            id: 'required',
+            name: 'required',
+            class: 'required',
+        };
+        //バリデーションの実行
+        super.newValidator({ id: id, name: name, class: className }, rules);
+
+        //idの存在を確認
+        const roomData = await customRules.id.callback(id);
+
+        //存在しないidか？
+        if (!roomData.length) {
+            //エラーメッセージの存在を定義
+            this.fails = true;
+
+            //idにエラーメッセージを追加
+            this.errorMessages.errors.id = [customRules.id.errorMesage];
+        }
+    }
 }
 module.exports = RoomValidation;
