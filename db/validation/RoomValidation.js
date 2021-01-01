@@ -35,9 +35,38 @@ class RoomValidation extends Validation {
         super(rulesErrorMesages);
 
     }
+
+    /**
+     * RoomViewModelのgetRoomDataById()のバリデーション
+     * @param {*} id 対象の部屋のid
+     */
+    async getRoomDataById(id) {
+        //バリデーションのルール
+        const rules = {
+            id: 'required'
+        };
+
+        //バリデーションの実行
+        super.newValidator({ id: id }, rules);
+
+        //idの存在を確認
+        const roomData = await customRules.id.callback(id);
+
+        //存在しないidか？
+        if (!roomData.length) {
+            //エラーメッセージの存在を定義
+            this.fails = true;
+
+            //idにエラーメッセージを追加
+            this.errorMessages.errors.id = [customRules.id.errorMesage];
+        }
+    }
+
+
     /**
      * RoomViewModelのgetPagenateData()のバリデーション
-     * @param {object} data 
+     * @param {*} offset 始まりのぺージ
+     * @param {*} limit 取得データ数
      */
     getPagenateData(offset, limit) {
         //バリデーションのルール
@@ -79,6 +108,10 @@ class RoomValidation extends Validation {
         }
     }
 
+    /**
+     * RoomViewModel.delete()のバリデーション
+     * @param {string} id 対象の部屋のid
+     */
     async delete(id) {
         //バリデーションのルール
         const rules = {
