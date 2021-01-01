@@ -99,7 +99,7 @@ class RoomValidation extends Validation {
         const roomData = await customRules.name.callback(name);
 
         //同じ名前の部屋名は存在するか？
-        if (roomData) {
+        if (roomData.length) {
             //エラーメッセージの存在を定義
             this.fails = true;
 
