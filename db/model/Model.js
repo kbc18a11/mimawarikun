@@ -55,6 +55,16 @@ class Model {
     }
 
     /**
+     *  _idのレコードを更新
+     * @param {*} _id 対象の部屋のid
+     * @param {*} name 対象の部屋のname
+     * @param {*} className 対象の部屋のclass
+     */
+    async update(_id, name, className) {
+        return await this.db.update({ _id: _id }, { name: name, class: className }, { returnUpdatedDocs: true },);
+    }
+
+    /**
      * _idからレコードを検索
      * @param {string} _id 検索したいレコードの_id
      * @returns {Array[object]} 検索結果

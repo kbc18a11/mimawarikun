@@ -6,7 +6,7 @@ const getRoomDataById = async () => {
     const data = await RoomViewModel.getRoomDataById('OgVrNT7XtsbkHMW0');
     console.log(data);
 }
-getRoomDataById();
+//getRoomDataById();
 
 const getPagenateData = async () => {
     console.log('getPagenateData()');
@@ -17,7 +17,7 @@ const getPagenateData = async () => {
 
 const create = async () => {
     console.log('create()');
-    const data = await RoomViewModel.create('222', 'ITE7');
+    const data = await RoomViewModel.create('788', 'ITE7');
     console.log(data);
 }
 //create();
@@ -28,3 +28,10 @@ const de = async () => {
     console.log(data);
 }
 //de();
+
+const update = async () => {
+    console.log('update()');
+    const data = await RoomViewModel.update('bq2dfaYJnHjdnKGJ', 'aa', '782');
+    console.log(data);
+}
+update();

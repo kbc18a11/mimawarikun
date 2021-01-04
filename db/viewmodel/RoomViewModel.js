@@ -86,6 +86,26 @@ class RoomViewModel {
 
         return new Room().delete(id);
     }
+
+    /**
+     * 部屋情報の更新
+     * @param {*} id 
+     * @param {*} name 
+     * @param {*} className 
+     */
+    static async update(id, name, className) {
+        const roomValidator = new RoomValidator();
+        //バリデーションを実行
+        await roomValidator.update(id, name, className);
+
+        //バリデーションは失敗したか？
+        if (roomValidator.fails) {
+            //エラーメッセージを返す
+            return roomValidator.errorMessages;
+        }
+
+        return new Room().update(id, name, className);
+    }
 }
 
 module.exports = RoomViewModel;
