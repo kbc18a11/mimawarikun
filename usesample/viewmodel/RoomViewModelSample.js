@@ -1,6 +1,10 @@
 const RoomViewModel = require(__dirname + '/../../db/viewmodel/RoomViewModel');
 const Room = require(__dirname + '/../../db/model/Room');
 
+/**
+ * 引数idから、部屋情報を取得
+ * RoomViewModel.getRoomDataById('部屋のid');
+ */
 const getRoomDataById = async () => {
     console.log('getRoomDataById()');
     const data = await RoomViewModel.getRoomDataById('OgVrNT7XtsbkHMW0');
@@ -8,6 +12,10 @@ const getRoomDataById = async () => {
 }
 //getRoomDataById();
 
+/**
+ * ページネーション用の部屋情報の取得
+ * RoomViewModel.getPagenateData(行の開始時刻, 取得数);
+ */
 const getPagenateData = async () => {
     console.log('getPagenateData()');
     const data = await RoomViewModel.getPagenateData(0, 5);
@@ -15,6 +23,10 @@ const getPagenateData = async () => {
 }
 //getPagenateData();
 
+/**
+ * 部屋情報の追加
+ * RoomViewModel.create(部屋名(番号), 利用するクラス名);
+ */
 const create = async () => {
     console.log('create()');
     const data = await RoomViewModel.create('788', 'ITE7');
@@ -22,6 +34,10 @@ const create = async () => {
 }
 //create();
 
+/**
+ * 部屋情報の削除
+ * RoomViewModel.delete(削除したい部屋のid);
+ */
 const de = async () => {
     console.log('delete()');
     const data = await RoomViewModel.delete('QRkUTt65m5l0OQnm');
@@ -29,6 +45,10 @@ const de = async () => {
 }
 //de();
 
+/**
+ * 部屋情報の更新
+ * RoomViewModel.update(更新したい部屋のid, 部屋名(番号), 利用するクラス名);
+ */
 const update = async () => {
     console.log('update()');
     const data = await RoomViewModel.update('bq2dfaYJnHjdnKGJ', 'aa', '782');
